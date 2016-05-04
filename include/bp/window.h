@@ -25,9 +25,13 @@ namespace bp
             m_height(480),
             m_window_flags(0),
             m_shown(false)
-        {}
+        {
+        }
 
-        virtual ~window() { close(); }
+        virtual ~window()
+        {
+            close();
+        }
 
         /*
          * Initialize and show the window.
@@ -51,18 +55,47 @@ namespace bp
         /*
          * The following changes nothing if window is already shown.
          */
-        inline void set_window_flags(Uint32 flags) { m_window_flags = flags; }
-        inline void enable_window_flags(Uint32 flags) { m_window_flags |= flags; }
+        inline void set_window_flags(Uint32 flags)
+        {
+            m_window_flags = flags;
+        }
+        inline void enable_window_flags(Uint32 flags)
+        {
+            m_window_flags |= flags;
+        }
 
         /*
          * Get window properties.
          */
-        inline Uint32 id() const { return m_id; }
-        inline const std::string& title() const { return m_title; }
-        inline Uint32 window_flags() const { return m_window_flags; }
-        inline SDL_Window* window_handle() { return m_window; }
-        inline Uint32 window_id() { return m_id; }
-        inline bool shown() const { return m_shown; }
+        inline Uint32 id() const
+        {
+            return m_id;
+        }
+
+        inline const std::string& title() const
+        {
+            return m_title;
+        }
+
+        inline Uint32 window_flags() const
+        {
+            return m_window_flags;
+        }
+
+        inline SDL_Window* window_handle()
+        {
+            return m_window;
+        }
+
+        inline Uint32 window_id()
+        {
+            return m_id;
+        }
+
+        inline bool shown() const
+        {
+            return m_shown;
+        }
 
     protected:
         /*
@@ -91,5 +124,4 @@ namespace bp
 }
 
 #endif
-
 
