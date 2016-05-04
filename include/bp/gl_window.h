@@ -44,29 +44,29 @@ namespace bp
          */
         inline void set_gl_version(int major, int minor)
         {
-            if(!m_shown) m_gl_version =
-        {   major, minor};
-    }
+            if(!m_shown) m_gl_version = { major, minor };
+        }
 
-    inline void use_vsync(bool vsync)
-    {
-        if(!m_shown) m_vsync = vsync;
-    }
+        inline void use_vsync(bool vsync)
+        {
+            if(!m_shown) m_vsync = vsync;
+        }
 
-    /*
-     * True if vsync is enabled, false otherwise.
-     */
-    inline bool vsync() const
-    {   return m_vsync;}
+        /*
+         * True if vsync is enabled, false otherwise.
+         */
+        inline bool vsync() const
+        {
+            return m_vsync;
+        }
 
-    void show() override;
-    void close() override;
+        void show() override;
+        void close() override;
 
-private:
-    struct
-    {   int major, minor;}m_gl_version;
-    SDL_GLContext m_gl_context;
-    bool m_vsync;
+    private:
+        struct { int major, minor; } m_gl_version;
+        SDL_GLContext m_gl_context;
+        bool m_vsync;
 };
 }
 
