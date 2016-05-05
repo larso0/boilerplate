@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include "window.h"
 #include "gl_window.h"
+#include "event_handler.h"
 
 namespace bp
 {
