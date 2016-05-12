@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <vector>
 #include <functional>
+#include <utility>
 
 namespace bp
 {
@@ -53,15 +54,18 @@ namespace bp
         /*
          * Add callback functions for event callbacks.
          */
-        void add_quit_callback(std::function<void()> f);
-        void add_window_close_callback(std::function<void(Uint32)> f);
-        void add_window_resize_callback(
-            std::function<void(Uint32, int, int)> f);
+        void quit_callback(std::function<void()> f);
+        void window_close_callback(Uint32 window_id,
+                                   std::function<void()> f);
+        void window_resize_callback(Uint32 window_id,
+                                    std::function<void(int, int)> f);
 
     private:
         std::vector<std::function<void()>> quit_callbacks;
-        std::vector<std::function<void(Uint32)>> window_close_callbacks;
-        std::vector<std::function<void(Uint32, int, int)>> window_resize_callbacks;
+        std::vector<std::pair<Uint32, std::function<void()>>>
+            window_close_callbacks;
+        std::vector<std::pair<Uint32, std::function<void(int, int)>>>
+            window_resize_callbacks;
     };
 }
 

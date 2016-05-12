@@ -42,7 +42,7 @@ namespace bp
                 window_close(event->window.windowID);
                 break;
             case SDL_WINDOWEVENT_RESIZED:
-                case SDL_WINDOWEVENT_SIZE_CHANGED:
+            case SDL_WINDOWEVENT_SIZE_CHANGED:
                 window_resize(event->window.windowID, event->window.data1,
                               event->window.data2);
                 break;
@@ -57,32 +57,36 @@ namespace bp
 
     void event_handler::quit()
     {
-        for(auto f : quit_callbacks) f();
+        for(auto f : quit_callbacks)
+            f();
     }
 
     void event_handler::window_close(Uint32 window_id)
     {
-        for(auto f : window_close_callbacks) f(window_id);
+        for(auto pair : window_close_callbacks)
+            if(pair.first == window_id) pair.second();
     }
 
     void event_handler::window_resize(Uint32 window_id, int width, int height)
     {
-        for(auto f : window_resize_callbacks) f(window_id, width, height);
+        for(auto pair : window_resize_callbacks)
+            if(pair.first == window_id) pair.second(width, height);
     }
 
-    void event_handler::add_quit_callback(std::function<void()> f)
+    void event_handler::quit_callback(std::function<void()> f)
     {
         quit_callbacks.push_back(f);
     }
 
-    void event_handler::add_window_close_callback(std::function<void(Uint32)> f)
+    void event_handler::window_close_callback(Uint32 window_id,
+                                              std::function<void()> f)
     {
-        window_close_callbacks.push_back(f);
+        window_close_callbacks.push_back( { window_id, f });
     }
 
-    void event_handler::add_window_resize_callback(
-        std::function<void(Uint32, int, int)> f)
+    void event_handler::window_resize_callback(Uint32 window_id,
+                                               std::function<void(int, int)> f)
     {
-        window_resize_callbacks.push_back(f);
+        window_resize_callbacks.push_back( { window_id, f });
     }
 }
