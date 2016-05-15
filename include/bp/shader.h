@@ -50,7 +50,7 @@ namespace bp
         /*
          * Set the source code for the shader.
          */
-        inline void set_src(const std::string& src)
+        inline void src(const std::string& src)
         {
             m_src = src;
         }

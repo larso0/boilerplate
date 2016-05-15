@@ -32,34 +32,34 @@ namespace bp
         }
     }
 
-    void window::set_title(std::string title)
+    void window::title(std::string title)
     {
         if(m_shown) SDL_SetWindowTitle(m_window, title.c_str());
         m_title = title;
     }
 
-    void window::set_position(int x, int y)
+    void window::position(int x, int y)
     {
         if(m_shown) SDL_SetWindowPosition(m_window, x, y);
         m_x = x;
         m_y = y;
     }
 
-    void window::set_size(int width, int height)
+    void window::size(int width, int height)
     {
         if(m_shown) SDL_SetWindowSize(m_window, width, height);
         m_width = width;
         m_height = height;
     }
 
-    void window::set_bordered(bool bordered)
+    void window::bordered(bool bordered)
     {
         if(m_shown) SDL_SetWindowBordered(m_window, (SDL_bool)bordered);
         else if(bordered) m_window_flags &= ~SDL_WINDOW_BORDERLESS;
         else m_window_flags |= SDL_WINDOW_BORDERLESS;
     }
 
-    void window::set_fullscreen(bool fullscreen)
+    void window::fullscreen(bool fullscreen)
     {
         Uint32 flag = SDL_WINDOW_FULLSCREEN_DESKTOP;
         if(m_shown) SDL_SetWindowFullscreen(m_window, fullscreen ? flag : 0);

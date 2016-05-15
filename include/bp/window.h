@@ -46,22 +46,23 @@ namespace bp
         /*
          * Set window properties.
          */
-        void set_title(std::string title);
-        void set_position(int x, int y);
-        void set_size(int width, int height);
-        void set_bordered(bool bordered);
-        void set_fullscreen(bool fullscreen);
+        void title(std::string title);
+        void position(int x, int y);
+        void size(int width, int height);
+        void bordered(bool bordered);
+        void fullscreen(bool fullscreen);
 
         /*
          * The following changes nothing if window is already shown.
          */
-        inline void set_window_flags(Uint32 flags)
-        {
-            m_window_flags = flags;
-        }
-        inline void enable_window_flags(Uint32 flags)
+        inline void window_flags(Uint32 flags)
         {
             m_window_flags |= flags;
+        }
+        inline void resizable(bool r)
+        {
+            if(r) m_window_flags |= SDL_WINDOW_RESIZABLE;
+            else m_window_flags &= ~SDL_WINDOW_RESIZABLE;
         }
 
         /*
@@ -77,24 +78,41 @@ namespace bp
             return m_title;
         }
 
-        inline Uint32 window_flags() const
+        inline Uint32 flags() const
         {
             return m_window_flags;
         }
 
-        inline SDL_Window* window_handle()
+        inline SDL_Window* handle()
         {
             return m_window;
-        }
-
-        inline Uint32 window_id()
-        {
-            return m_id;
         }
 
         inline bool shown() const
         {
             return m_shown;
+        }
+
+        inline int width() const
+        {
+            return m_width;
+        }
+
+        inline int width()
+        {
+            if(m_shown) SDL_GetWindowSize(m_window, &m_width, &m_height);
+            return m_width;
+        }
+
+        inline int height() const
+        {
+            return m_height;
+        }
+
+        inline int height()
+        {
+            if(m_shown) SDL_GetWindowSize(m_window, &m_width, &m_height);
+            return m_height;
         }
 
     protected:

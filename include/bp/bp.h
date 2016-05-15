@@ -35,7 +35,7 @@ namespace bp
          * Use LEVEL_ERROR for information to the user/developer
          * about errors that are fatal for the application.
          */
-        enum level
+        enum message_level
         {
             LEVEL_INFO,
             LEVEL_DEBUG,
@@ -51,11 +51,11 @@ namespace bp
          * Use DESTINATION_STDERR to push to the standard error
          * stream.
          * Use DESTINATION_LOGFILE to push to a logfile (use
-         * set_message_logfile to change filename).
+         * message_logfile to change filename).
          * Use DESTINATION_MESSAGEBOX to display a small window with
          * the message.
          */
-        enum destination
+        enum message_destination
         {
             DESTINATION_SUPRESS,
             DESTINATION_STDOUT,
@@ -67,19 +67,19 @@ namespace bp
         /*
          * Change the message destination for the given message level.
          */
-        void set_destination(level lvl, destination dst);
+        void destination(message_level lvl, message_destination dst);
 
         /*
          * Set the logfile to append messages of the given level to.
          * For messages to be pushed to the logfile, you need to set the messag
          * destination to LOGFILE for the given level.
          */
-        void set_logfile(level lvl, std::string logfile);
+        void logfile(message_level lvl, std::string logfile);
 
         /*
          * Push a message with a given message level.
          */
-        void push(level lvl, std::string msg);
+        void push(message_level lvl, std::string msg);
     }
 }
 

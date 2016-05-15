@@ -21,7 +21,7 @@ namespace bp
             m_gl_context(nullptr),
             m_vsync(true)
         {
-            enable_window_flags(SDL_WINDOW_OPENGL);
+            window_flags(SDL_WINDOW_OPENGL);
         }
 
         /*
@@ -42,7 +42,7 @@ namespace bp
         /*
          * Set properties.
          */
-        inline void set_gl_version(int major, int minor)
+        inline void gl_version(int major, int minor)
         {
             if(!m_shown) m_gl_version = { major, minor };
         }

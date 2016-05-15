@@ -30,22 +30,22 @@ namespace bp
     {
         static string logfiles[4] = { "info.log", "debug.log", "warning.log",
                                       "error.log" };
-        static destination destinations[4] = { DESTINATION_MESSAGEBOX,
-                                               DESTINATION_STDOUT,
-                                               DESTINATION_STDERR,
-                                               DESTINATION_STDERR };
+        static message_destination destinations[4] = { DESTINATION_MESSAGEBOX,
+                                                       DESTINATION_STDOUT,
+                                                       DESTINATION_STDERR,
+                                                       DESTINATION_STDERR };
 
-        void set_destination(level lvl, destination dst)
+        void destination(message_level lvl, message_destination dst)
         {
             destinations[lvl] = dst;
         }
 
-        void set_logfile(level lvl, string logfile)
+        void logfile(message_level lvl, string logfile)
         {
             logfiles[lvl] = logfile;
         }
 
-        static inline string lvl_to_str(level lvl)
+        static inline string lvl_to_str(message_level lvl)
         {
             switch(lvl)
             {
@@ -60,7 +60,7 @@ namespace bp
             }
         }
 
-        void push(level lvl, string msg)
+        void push(message_level lvl, string msg)
         {
             switch(destinations[lvl])
             {
