@@ -25,8 +25,7 @@ namespace bp
             if(err)
             {
                 string err_str(SDL_GetError());
-                message::push(message::LEVEL_WARNING,
-                              "Unable to set vsync: " + err_str);
+                warning << "Unable to set vsync: " << err_str << endmsg;
             }
         }
 

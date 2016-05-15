@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include "window.h"
 #include "gl_window.h"
-#include "event_handler.h"
+#include "message.h"
 
 namespace bp
 {
@@ -19,68 +19,6 @@ namespace bp
      * Quit the library.
      */
     void quit();
-
-    /*
-     * Push messages to message boxes, standard output, standard error or to
-     * log files.
-     */
-    namespace message
-    {
-        /*
-         * What kinds of messages to push.
-         * Use LEVEL_INFO for information to the user.
-         * Use LEVEL_DEBUG for information to the developer.
-         * Use LEVEL_DEBUG for information to the user/developer
-         * about errors that are not fatal for the application.
-         * Use LEVEL_ERROR for information to the user/developer
-         * about errors that are fatal for the application.
-         */
-        enum message_level
-        {
-            LEVEL_INFO,
-            LEVEL_DEBUG,
-            LEVEL_WARNING,
-            LEVEL_ERROR
-        };
-
-        /*
-         * Destination messages could be pushed to.
-         * Use DESTINATION_SUPRESS to ignore message.
-         * Use DESTINATION_STDOUT to push to the standard output
-         * stream.
-         * Use DESTINATION_STDERR to push to the standard error
-         * stream.
-         * Use DESTINATION_LOGFILE to push to a logfile (use
-         * message_logfile to change filename).
-         * Use DESTINATION_MESSAGEBOX to display a small window with
-         * the message.
-         */
-        enum message_destination
-        {
-            DESTINATION_SUPRESS,
-            DESTINATION_STDOUT,
-            DESTINATION_STDERR,
-            DESTINATION_LOGFILE,
-            DESTINATION_MESSAGEBOX
-        };
-
-        /*
-         * Change the message destination for the given message level.
-         */
-        void destination(message_level lvl, message_destination dst);
-
-        /*
-         * Set the logfile to append messages of the given level to.
-         * For messages to be pushed to the logfile, you need to set the messag
-         * destination to LOGFILE for the given level.
-         */
-        void logfile(message_level lvl, std::string logfile);
-
-        /*
-         * Push a message with a given message level.
-         */
-        void push(message_level lvl, std::string msg);
-    }
 }
 
 #endif
