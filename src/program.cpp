@@ -22,7 +22,7 @@ namespace bp
         glAttachShader(m_handle, s);
         GLenum err = glGetError();
         if(err != GL_NO_ERROR)
-        throw runtime_error("Error when attaching shader.");
+            throw runtime_error("Error when attaching shader.");
     }
 
     void program::link()
@@ -34,7 +34,7 @@ namespace bp
         glGetProgramiv(m_handle, GL_LINK_STATUS, &link_status);
         get_log();
         if(link_status == GL_FALSE)
-        throw runtime_error("Unable to link program: " + m_log);
+            throw runtime_error("Unable to link program: " + m_log);
         m_linked = true;
     }
 
@@ -42,9 +42,9 @@ namespace bp
     {
         GLint location = glGetAttribLocation(m_handle, name.c_str());
         if(location == -1)
-        throw runtime_error("Unable to get attribute location for \""
-                            + name
-                            + "\".");
+            throw runtime_error("Unable to get attribute location for \""
+                                + name
+                                + "\".");
         return location;
     }
 
@@ -52,9 +52,9 @@ namespace bp
     {
         GLint location = glGetUniformLocation(m_handle, name.c_str());
         if(location == -1)
-        throw runtime_error("Unable to get uniform location for \""
-                            + name
-                            + "\".");
+            throw runtime_error("Unable to get uniform location for \""
+                                + name
+                                + "\".");
         return location;
     }
 

@@ -24,7 +24,7 @@ namespace bp
             m_width(640),
             m_height(480),
             m_window_flags(0),
-            m_shown(false)
+            m_realized(false)
         {
         }
 
@@ -36,7 +36,7 @@ namespace bp
         /*
          * Initialize and show the window.
          */
-        virtual void show();
+        virtual void realize();
 
         /*
          * Close the window.
@@ -90,7 +90,7 @@ namespace bp
 
         inline bool shown() const
         {
-            return m_shown;
+            return m_realized;
         }
 
         inline int width() const
@@ -100,7 +100,7 @@ namespace bp
 
         inline int width()
         {
-            if(m_shown) SDL_GetWindowSize(m_window, &m_width, &m_height);
+            if(m_realized) SDL_GetWindowSize(m_window, &m_width, &m_height);
             return m_width;
         }
 
@@ -111,7 +111,7 @@ namespace bp
 
         inline int height()
         {
-            if(m_shown) SDL_GetWindowSize(m_window, &m_width, &m_height);
+            if(m_realized) SDL_GetWindowSize(m_window, &m_width, &m_height);
             return m_height;
         }
 
@@ -137,7 +137,7 @@ namespace bp
         /*
          * Whether or not the window is shown.
          */
-        bool m_shown;
+        bool m_realized;
     };
 }
 

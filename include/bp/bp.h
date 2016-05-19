@@ -5,6 +5,8 @@
 #include "window.h"
 #include "gl_window.h"
 #include "message.h"
+#include "shader.h"
+#include "program.h"
 
 namespace bp
 {

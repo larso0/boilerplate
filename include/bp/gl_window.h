@@ -17,7 +17,7 @@ namespace bp
          * Default constructor that set up OpenGL version.
          */
         gl_window() :
-            m_gl_version( { 4, 5 }),
+            m_gl_version({ 4, 5 }),
             m_gl_context(nullptr),
             m_vsync(true)
         {
@@ -44,12 +44,12 @@ namespace bp
          */
         inline void gl_version(int major, int minor)
         {
-            if(!m_shown) m_gl_version = { major, minor };
+            if(!m_realized) m_gl_version = { major, minor };
         }
 
         inline void use_vsync(bool vsync)
         {
-            if(!m_shown) m_vsync = vsync;
+            if(!m_realized) m_vsync = vsync;
         }
 
         /*
@@ -60,7 +60,7 @@ namespace bp
             return m_vsync;
         }
 
-        void show() override;
+        void realize() override;
         void close() override;
 
     private:

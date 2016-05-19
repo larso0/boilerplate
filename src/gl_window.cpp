@@ -6,17 +6,17 @@ using namespace std;
 
 namespace bp
 {
-    void gl_window::show()
+    void gl_window::realize()
     {
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, m_gl_version.major);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, m_gl_version.minor);
-        window::show();
+        window::realize();
 
         m_gl_context = SDL_GL_CreateContext(m_window);
         if(m_gl_context == nullptr)
         {
             string err_str(SDL_GetError());
-            throw runtime_error("Unable to show window: " + err_str);
+            throw runtime_error("Unable to realize window: " + err_str);
         }
 
         if(m_vsync)
