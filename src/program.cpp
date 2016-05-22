@@ -40,6 +40,7 @@ namespace bp
 
     GLint program::attribute(const std::string& name)
     {
+        if(!m_linked) link();
         GLint location = glGetAttribLocation(m_handle, name.c_str());
         if(location == -1)
             throw runtime_error("Unable to get attribute location for \""
@@ -50,6 +51,7 @@ namespace bp
 
     GLint program::uniform(const std::string& name)
     {
+        if(!m_linked) link();
         GLint location = glGetUniformLocation(m_handle, name.c_str());
         if(location == -1)
             throw runtime_error("Unable to get uniform location for \""

@@ -49,6 +49,7 @@ namespace bp
          */
         inline void use()
         {
+            if(!m_linked) link();
             glUseProgram(m_handle);
         }
 

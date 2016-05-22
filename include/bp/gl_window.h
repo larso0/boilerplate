@@ -40,21 +40,18 @@ namespace bp
         }
 
         /*
-         * Set properties.
+         * Set and get properties.
          */
         inline void gl_version(int major, int minor)
         {
             if(!m_realized) m_gl_version = { major, minor };
         }
 
-        inline void use_vsync(bool vsync)
+        inline void vsync(bool vsync)
         {
             if(!m_realized) m_vsync = vsync;
         }
 
-        /*
-         * True if vsync is enabled, false otherwise.
-         */
         inline bool vsync() const
         {
             return m_vsync;
