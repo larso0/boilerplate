@@ -8,7 +8,7 @@
 namespace bp
 {
     /*
-     * Wrapper class for an OpenGL window.
+     * Wrapper class for an OpenGL window and context.
      */
     class gl_window : public window
     {
@@ -32,11 +32,20 @@ namespace bp
         }
 
         /*
-         * Swap the gl buffers.
+         * Swap the front and back buffers.
          */
         inline void swap_buffers()
         {
             SDL_GL_SwapWindow(m_window);
+        }
+
+        /*
+         * Switch to using the context for this window.
+         * Use this to switch between several gl windows.
+         */
+        inline void make_current()
+        {
+            SDL_GL_MakeCurrent(m_window, m_gl_context);
         }
 
         /*
