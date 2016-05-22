@@ -6,6 +6,8 @@ using namespace std;
 
 namespace bp
 {
+    bool gl_window::glew_inited = false;
+
     void gl_window::realize()
     {
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, m_gl_version.major);
@@ -29,6 +31,7 @@ namespace bp
             }
         }
 
+        if(glew_inited) return;
         glewExperimental = GL_TRUE;
         GLenum glew_err = glewInit();
         if(glew_err != GLEW_OK)
@@ -36,6 +39,7 @@ namespace bp
             string error_str((const char*)glewGetErrorString(glew_err));
             throw runtime_error("Could not initialize GLEW: " + error_str);
         }
+        glew_inited = true;
     }
 
     void gl_window::close()

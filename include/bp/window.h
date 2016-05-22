@@ -55,10 +55,11 @@ namespace bp
         /*
          * The following changes nothing if window is already shown.
          */
-        inline void window_flags(Uint32 flags)
+        inline void flags(Uint32 flags)
         {
             m_window_flags |= flags;
         }
+
         inline void resizable(bool r)
         {
             if(r) m_window_flags |= SDL_WINDOW_RESIZABLE;

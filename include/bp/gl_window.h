@@ -21,7 +21,7 @@ namespace bp
             m_gl_context(nullptr),
             m_vsync(true)
         {
-            window_flags(SDL_WINDOW_OPENGL);
+            flags(SDL_WINDOW_OPENGL);
         }
 
         /*
@@ -67,6 +67,8 @@ namespace bp
         struct { int major, minor; } m_gl_version;
         SDL_GLContext m_gl_context;
         bool m_vsync;
+
+        static bool glew_inited;
 };
 }
 
