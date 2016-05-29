@@ -7,6 +7,7 @@
 #include "message.h"
 #include "shader.h"
 #include "program.h"
+#include "buffer.h"
 
 namespace bp
 {
