@@ -84,41 +84,41 @@ namespace bp
          * Get and set properties
          */
 
-        inline void destination(message_destination dst)
+        void destination(message_destination dst)
         {
             m_dst = dst;
         }
-        inline message_destination destination() const
+        message_destination destination() const
         {
             return m_dst;
         }
 
-        inline void title(const std::string& title)
+        void title(const std::string& title)
         {
             m_title = title;
         }
-        inline const std::string& title() const
+        const std::string& title() const
         {
             return m_title;
         }
 
-        inline void stream(std::ostream* s)
+        void stream(std::ostream* s)
         {
             m_stream = s;
             if(s) m_dst = MESSAGE_DESTINATION_STREAM;
             else m_dst = MESSAGE_DESTINATION_SUPRESS;
         }
-        inline const std::ostream* stream() const
+        const std::ostream* stream() const
         {
             return m_stream;
         }
 
-        inline void logfile(std::string path)
+        void logfile(std::string path)
         {
             m_logfile = path;
             m_dst = MESSAGE_DESTINATION_LOGFILE;
         }
-        inline const std::string& logfile() const
+        const std::string& logfile() const
         {
             return m_logfile;
         }

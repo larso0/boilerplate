@@ -34,7 +34,7 @@ namespace bp
         /*
          * Swap the front and back buffers.
          */
-        inline void swap_buffers()
+        void swap_buffers()
         {
             SDL_GL_SwapWindow(m_window);
         }
@@ -43,7 +43,7 @@ namespace bp
          * Switch to using the context for this window.
          * Use this to switch between several gl windows.
          */
-        inline void make_current()
+        void make_current()
         {
             SDL_GL_MakeCurrent(m_window, m_gl_context);
         }
@@ -51,17 +51,17 @@ namespace bp
         /*
          * Set and get properties.
          */
-        inline void gl_version(int major, int minor)
+        void gl_version(int major, int minor)
         {
             if(!m_realized) m_gl_version = { major, minor };
         }
 
-        inline void vsync(bool vsync)
+        void vsync(bool vsync)
         {
             if(!m_realized) m_vsync = vsync;
         }
 
-        inline bool vsync() const
+        bool vsync() const
         {
             return m_vsync;
         }

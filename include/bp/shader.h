@@ -50,7 +50,7 @@ namespace bp
         /*
          * Set the source code for the shader.
          */
-        inline void src(const std::string& src)
+        void src(const std::string& src)
         {
             m_src = src;
         }
@@ -63,7 +63,7 @@ namespace bp
         /*
          * Shader type, e.g GL_VERTEX_SHADER, GL_FRAGMENT_SHADER, etc.
          */
-        inline GLenum type() const
+        GLenum type() const
         {
             return m_type;
         }
@@ -71,7 +71,7 @@ namespace bp
         /*
          * ID or handle to OpenGL shader.
          */
-        inline GLuint handle()
+        GLuint handle()
         {
             return m_handle;
         }
@@ -79,7 +79,7 @@ namespace bp
         /*
          * The loaded source code for the shader.
          */
-        inline const std::string& src() const
+        const std::string& src() const
         {
             return m_src;
         }
@@ -87,7 +87,7 @@ namespace bp
         /*
          * The information log from compiling the shader.
          */
-        inline const std::string& log() const
+        const std::string& log() const
         {
             return m_log;
         }
@@ -95,7 +95,7 @@ namespace bp
         /*
          * Returns true if the shader have been compiled, false otherwise.
          */
-        inline bool is_compiled() const
+        bool is_compiled() const
         {
             return m_compiled;
         }

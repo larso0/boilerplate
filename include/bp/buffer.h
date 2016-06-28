@@ -62,7 +62,7 @@ namespace bp
         /*
          * Get the handle to the OpenGL buffer object.
          */
-        inline GLuint handle()
+        GLuint handle()
         {
             return m_handle;
         }
@@ -71,12 +71,12 @@ namespace bp
          * Set the buffer usage.
          * The usage must be set before binding the buffer.
          */
-        inline void usage(GLenum usage)
+        void usage(GLenum usage)
         {
             m_usage = usage;
         }
 
-        inline GLenum usage() const
+        GLenum usage() const
         {
             return m_usage;
         }
@@ -84,7 +84,7 @@ namespace bp
         /*
          * Dirty the buffer so the data is updated the next time it is bound.
          */
-        inline virtual void dirty()
+        virtual void dirty()
         {
             m_dirty = true;
         }

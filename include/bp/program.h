@@ -47,7 +47,7 @@ namespace bp
         /*
          * Use the program.
          */
-        inline void use()
+        void use()
         {
             if(!m_linked) link();
             glUseProgram(m_handle);
@@ -66,7 +66,7 @@ namespace bp
         /*
          * ID or handle to OpenGL program.
          */
-        inline GLuint handle()
+        GLuint handle()
         {
             return m_handle;
         }
@@ -74,7 +74,7 @@ namespace bp
         /*
          * The information log from linking the program.
          */
-        inline const std::string& log() const
+        const std::string& log() const
         {
             return m_log;
         }
@@ -82,7 +82,7 @@ namespace bp
         /*
          * Returns true if the program have been linked, false otherwise.
          */
-        inline bool is_linked() const
+        bool is_linked() const
         {
             return m_linked;
         }

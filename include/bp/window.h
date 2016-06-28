@@ -55,12 +55,12 @@ namespace bp
         /*
          * The following changes nothing if window is already shown.
          */
-        inline void flags(Uint32 flags)
+        void flags(Uint32 flags)
         {
             m_window_flags |= flags;
         }
 
-        inline void resizable(bool r)
+        void resizable(bool r)
         {
             if(r) m_window_flags |= SDL_WINDOW_RESIZABLE;
             else m_window_flags &= ~SDL_WINDOW_RESIZABLE;
@@ -69,48 +69,48 @@ namespace bp
         /*
          * Get window properties.
          */
-        inline Uint32 id() const
+        Uint32 id() const
         {
             return m_id;
         }
 
-        inline const std::string& title() const
+        const std::string& title() const
         {
             return m_title;
         }
 
-        inline Uint32 flags() const
+        Uint32 flags() const
         {
             return m_window_flags;
         }
 
-        inline SDL_Window* handle()
+        SDL_Window* handle()
         {
             return m_window;
         }
 
-        inline bool shown() const
+        bool shown() const
         {
             return m_realized;
         }
 
-        inline int width() const
+        int width() const
         {
             return m_width;
         }
 
-        inline int width()
+        int width()
         {
             if(m_realized) SDL_GetWindowSize(m_window, &m_width, &m_height);
             return m_width;
         }
 
-        inline int height() const
+        int height() const
         {
             return m_height;
         }
 
-        inline int height()
+        int height()
         {
             if(m_realized) SDL_GetWindowSize(m_window, &m_width, &m_height);
             return m_height;
