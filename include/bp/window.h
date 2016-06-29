@@ -46,7 +46,7 @@ namespace bp
         /*
          * Set window properties.
          */
-        void title(std::string title);
+        void title(const std::string& title);
         void position(int x, int y);
         void size(int width, int height);
         void bordered(bool bordered);

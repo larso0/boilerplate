@@ -32,7 +32,7 @@ namespace bp
         }
     }
 
-    void window::title(std::string title)
+    void window::title(const std::string& title)
     {
         if(m_realized) SDL_SetWindowTitle(m_window, title.c_str());
         m_title = title;

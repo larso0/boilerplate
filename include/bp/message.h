@@ -40,7 +40,7 @@ namespace bp
          * Constructor that takes an output stream to push messages to.
          * The title is pushed before the messages.
          */
-        message_stream(std::string title, std::ostream* s) :
+        message_stream(const std::string& title, std::ostream* s) :
             m_dst(MESSAGE_DESTINATION_STREAM),
             m_title(title),
             m_stream(s)
@@ -50,7 +50,7 @@ namespace bp
          * Constructor that takes path to a logfile to push messages to.
          * The title is pushed before the messages.
          */
-        message_stream(std::string title, const std::string& logfile) :
+        message_stream(const std::string& title, const std::string& logfile) :
             m_dst(MESSAGE_DESTINATION_LOGFILE),
             m_title(title),
             m_stream(nullptr),
@@ -61,7 +61,7 @@ namespace bp
          * Constructor that set up a stream to open messageboxes.
          * The title is used as a title to the messagebox window.
          */
-        message_stream(std::string title) :
+        message_stream(const std::string& title) :
             m_dst(MESSAGE_DESTINATION_MESSAGEBOX),
             m_title(title),
             m_stream(nullptr)
@@ -113,7 +113,7 @@ namespace bp
             return m_stream;
         }
 
-        void logfile(std::string path)
+        void logfile(const std::string& path)
         {
             m_logfile = path;
             m_dst = MESSAGE_DESTINATION_LOGFILE;
